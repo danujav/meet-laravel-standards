@@ -17,15 +17,19 @@ class UserService
      */
     public function signUpUser($request) {
 
-            $user = new User();
+//            $user = new User();
+//
+//            $user->name = $request->name;
+//            $user->email = $request->email;
+//            $user->password = $request->password;
+//
+//            $user->save();
 
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = $request->password;
+        /*we can use Mass Assignment instead of above steps.
+                              This one is best practice for save MODEL.*/
+            $create = User::create($request->all());
 
-            $user->save();
-
-            return new Ok($user);
+            return new Ok($create);
     }
 
     /**
