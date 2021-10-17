@@ -28,7 +28,6 @@ class UserService
         /*we can use Mass Assignment instead of above steps.
                               This one is best practice for save MODEL.*/
             $create = User::create($request->all());
-
             return new Ok($create);
     }
 

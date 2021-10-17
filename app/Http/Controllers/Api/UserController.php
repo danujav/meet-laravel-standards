@@ -61,6 +61,8 @@ class UserController extends Controller
     {
         $result = $this->userService->signUpUser($request);
         return fractal($result->unwrap(), new UserTransformer)->respond(200);
+
+
     }
 
     /**
