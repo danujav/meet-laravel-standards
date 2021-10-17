@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CheckUser;
 use App\Http\Requests\StoreUser;
+use App\Models\User;
 use App\Services\UserService;
 use App\Transformers\UserTransformer;
-use http\Env\Response;
 use Illuminate\Http\Request;
+
 
 class UserController extends Controller
 {
@@ -64,12 +66,36 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *@param  \Illuminate\Http\Request  $request
+     *
      */
-    public function show($id)
+    public function show(CheckUser $request)
     {
-        //
+        $result = $this->userService->checkingWithEmail($request);
+
+
+        if($result->isNotEmpty()) {
+
+            if($result[0]->password == $request->get('password')) {
+                $data = [
+                    "massage" => "Password Correct",
+                ];
+                return response()->json($data);
+            } else {
+                $data = [
+                    "massage" => "Password incorrect",
+                ];
+                return response()->json($data);
+            }
+        } else {
+            $data = [
+                "massage" => "Invalid user_name",
+            ];
+            return response()->json($data);
+        }
+
+
+
     }
 
     /**
