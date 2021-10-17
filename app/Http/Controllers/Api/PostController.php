@@ -1,12 +1,29 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePost;
 use App\Models\Post;
+use App\Services\PostService;
+use App\Transformers\PostTransformer;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    /**
+     * @param PostService
+     **/
+    protected $postService;
+
+    /**
+     * @param PostService $postService
+     **/
+    public function __construct(PostService $postService)
+    {
+        $this->postService = $postService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -31,11 +48,12 @@ class PostController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|string
      */
-    public function store(Request $request)
+    public function store(StorePost $request)
     {
-        //
+        $result = $this->postService->savePost($request);
+        return fractal($result->unwrap(), new PostTransformer)->respond(200);
     }
 
     /**

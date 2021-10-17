@@ -18,7 +18,7 @@ class UserController extends Controller
      *
      * @var UserService
      */
-    protected $user_service;
+    protected $userService;
 
     /**
      * Create a new controller instance.
