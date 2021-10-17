@@ -20,4 +20,13 @@ class PostService
             $create = Post::create($request->all());
             return new Ok($create);
     }
+
+    /**
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse|Ok|string
+     */
+    public function destroyPost($id)
+    {
+        return Post::destroy($id);
+    }
 }
