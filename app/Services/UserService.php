@@ -41,7 +41,6 @@ class UserService
             ->where('email', '=', $request->email)
             ->get('password');
 
-//        echo($user->toArray());
         return $user;
     }
 }
