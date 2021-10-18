@@ -82,12 +82,13 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * @param  int  $id
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, Post $post)
+    public function update(StorePost $request, $id)
     {
-        //
+        $result = $this->postService->update($request, $id);
+        return fractal($result->unwrap(), new PostTransformer)->respond(200);
     }
 
     /**

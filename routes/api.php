@@ -22,6 +22,7 @@ Route::post('logins', [UserController::class, 'show']);
 
 Route::post('posts', [PostController::class, 'store']);
 Route::delete('posts/{id}', [PostController::class, 'destroy']);
+Route::put('posts/{id}', [PostController::class, 'update']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
