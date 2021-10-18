@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @method static create(array $all)
+ * @method static get()
  */
 class Post extends Model
 {

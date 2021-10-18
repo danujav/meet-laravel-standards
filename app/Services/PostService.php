@@ -47,4 +47,13 @@ class PostService
         $post->save();
         return new Ok($post);
     }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse|Ok|string
+     */
+    public function getAll()
+    {
+        return new Ok(Post::get());
+    }
+
 }
