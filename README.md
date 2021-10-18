@@ -1,4 +1,4 @@
-![Laravel best practices](/images/logo-english.png?raw=true)
+![Laravel best practices](https://miro.medium.com/max/960/1*nfeQI-JH-K2cjPnv9QlP-w.jpeg)
 
 Translations:
 
