@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('users', [UserController::class, 'store']);
-Route::post('logins', [UserController::class, 'show']);
+Route::post('users/signup', [UserController::class, 'store']);
+Route::post('users/login', [UserController::class, 'show']);
 
 Route::post('posts', [PostController::class, 'store']);
 Route::delete('posts/{id}', [PostController::class, 'destroy']);
